@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/regepan/lint-message/issues"
   },
-  "homepage": "https://github.com/regepan/lint-message#readme"
+  "homepage": "https://github.com/regepan/lint-message#readme",
+  "dependencies": {
+    "log-symbols": "^2.1.0"
+  }
 }
