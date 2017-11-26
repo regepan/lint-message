@@ -5,8 +5,8 @@ const pkg = require('./package.json');
 const symbols = require("log-symbols");
 const commitMessage = fs.readFileSync( pkg._where + '/' + process.argv.slice(3)[0] ).toString();
 
-const checkVietnamese = function (extension) {
-  return extension.match(/[àáảãạằắẳẵặầấẩẫậìíỉĩịỳýỷỹỵùúủũụừứửữựèéẻẽẹềếểễệòóỏõọồốổỗộờớởỡợ]/i);
+const checkVietnamese = function (str) {
+  return str.match(/[àáảãạằắẳẵặầấẩẫậìíỉĩịỳýỷỹỵùúủũụừứửữựèéẻẽẹềếểễệòóỏõọồốổỗộờớởỡợ]/i);
 };
 
 module.exports.checkVietnamese = checkVietnamese;
