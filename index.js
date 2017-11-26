@@ -1,7 +1,17 @@
 "use strict";
 
+const fs = require('fs');
+const pkg = require('./package.json');
 const symbols = require("log-symbols");
+const commitMessage = fs.readFileSync( pkg._where + '/' + process.argv.slice(3)[0] ).toString();
 
-require('fs').readFileSync( process.env.GIT_PARAMS );
+const checkVietnamese = function (extension) {
+  return extension.match(/[àáảãạằắẳẵặầấẩẫậìíỉĩịỳýỷỹỵùúủũụừứửữựèéẻẽẹềếểễệòóỏõọồốổỗộờớởỡợ]/i);
+};
 
-process.exit(1);
+module.exports.checkVietnamese = checkVietnamese;
+
+if (checkVietnamese(commitMessage)) {
+  console.error('  ' + symbols['error'], ' Can not use Vietnamese for commit message.');
+  process.exit(1);
+}
