@@ -1,9 +1,12 @@
 "use strict";
 
 const fs = require('fs');
+const path = require('path');
 const pkg = require('./package.json');
 const symbols = require("log-symbols");
-const commitMessage = fs.readFileSync( pkg._where + '/' + process.argv.slice(3)[0] ).toString();
+
+const commitMessagePath = path.join(pkg._where, process.argv.slice(3)[0]);
+const commitMessage = fs.readFileSync(commitMessagePath).toString();
 
 const checkVietnamese = function (str) {
   return str.match(/[àáảãạằắẳẵặầấẩẫậìíỉĩịỳýỷỹỵùúủũụừứửữựèéẻẽẹềếểễệòóỏõọồốổỗộờớởỡợ]/i);
