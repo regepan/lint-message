@@ -5,8 +5,10 @@ const path = require('path');
 const pkg = require('./package.json');
 const symbols = require("log-symbols");
 
-const commitMessagePath = path.join(pkg._where, process.argv.slice(3)[0]);
-const commitMessage = fs.readFileSync(commitMessagePath).toString();
+// const commitMessagePath = path.join(pkg._where, process.argv.slice(3)[0]);
+const commitMessage = fs.readFileSync(process.env.GIT_PARAMS).toString();
+
+console.log('process.env.GIT_PARAMS: ' + process.env.GIT_PARAMS);
 
 const checkVietnamese = function (str) {
   return str.match(/[àáảãạằắẳẵặầấẩẫậìíỉĩịỳýỷỹỵùúủũụừứửữựèéẻẽẹềếểễệòóỏõọồốổỗộờớởỡợ]/i);
